@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYBERBIOS | Gaming & Community</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 25px 16px;
+  background-color: #0c0b16;
+  background-image: url("fondoPag.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 550px;
+  margin: auto;
+}
+
+/* ENCABEZADO */
+
+header {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.logo {
+  width: 85px;
+  height: 85px;
+  margin: auto;
+  border: 2px solid #35dfff;
+  border-radius: 22px;
+  display: block;
+  object-fit: contain;
+  background: #211b35;
+  box-shadow: 0 0 20px #35dfff88;
+}
+
+h1 {
+  font-size: 42px;
+  margin: 18px 0 8px;
+  text-shadow: 0 0 15px #35dfff;
+}
+
+h1 span {
+  color: #35dfff;
+}
+
+.subtitle {
+  color: #ed55d5;
+  font-weight: bold;
+}
+
+.description {
+  color: #c5c3d1;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* DIRECCION */
+
+.address {
+  display: block;
+  text-align: center;
+  padding: 17px;
+  margin-bottom: 22px;
+  border-radius: 13px;
+  background: #211b35;
+  border: 1px solid #35dfff55;
+  color: white;
+  text-decoration: none;
+}
+
+/* BOTONES */
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  padding: 17px;
+  margin: 13px 0;
+  border-radius: 13px;
+  background: linear-gradient(110deg,#211a35,#171629);
+  border: 1px solid #ffffff22;
+  color: white;
+  text-decoration: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.link:hover {
+  transform: translateY(-3px);
+  border-color: #35dfff;
+  box-shadow: 0 0 16px #35dfff44;
+}
+
+.icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  font-size: 22px;
+  background: #ffffff16;
+}
+
+.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.link-text {
+  flex: 1;
+}
+
+.link-text strong {
+  display: block;
+  font-size: 14px;
+}
+
+.link-text small {
+  display: block;
+  color: #aaa8bc;
+  margin-top: 5px;
+  font-size: 11px;
+}
+
+/* SERVICIOS */
+
+.section-title {
+  text-align: center;
+  color: #35dfff;
+  letter-spacing: 3px;
+  font-size: 12px;
+  margin: 30px 0 15px;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.service {
+  background: #1b192a;
+  border: 1px solid #ffffff22;
+  border-radius: 13px;
+  padding: 17px 10px;
+  text-align: center;
+}
+
+.service .emoji {
+  font-size: 28px;
+}
+
+.service strong {
+  display: block;
+  color: #35dfff;
+  font-size: 12px;
+  margin: 9px 0 5px;
+}
+
+.service small {
+  color: #aaa8bc;
+  font-size: 11px;
+}
+
+/* WIFI */
+
+.wifi {
+  background: #19182a;
+  border: 1px solid #35dfff77;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.wifi h2 {
+  color: #35dfff;
+  font-size: 18px;
+}
+
+.wifi p {
+  color: #bbb;
+  font-size: 13px;
+}
+
+.wifi button {
+  border: none;
+  background: linear-gradient(90deg,#35dfff,#853bff);
+  padding: 13px 22px;
+  color: white;
+  font-weight: bold;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.wifi-info {
+  display: none;
+  background: #252139;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.wifi-info strong {
+  display: block;
+  margin: 10px;
+  overflow-wrap: anywhere;
+}
+
+.wifi-info .wifi-image {
+  display: block;
+  width: min(240px, 100%);
+  height: auto;
+  margin: 12px auto 18px;
+  border-radius: 10px;
+}
+
+.price-dialog {
+  position: relative;
+  width: fit-content;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px);
+  padding: 48px 12px 12px;
+  overflow: auto;
+  border: 1px solid #35dfff;
+  border-radius: 15px;
+  background: #171629;
+}
+
+.price-dialog::backdrop {
+  background: #000c;
+}
+
+.price-dialog img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100dvh - 90px);
+  object-fit: contain;
+}
+
+.carousel-dialog {
+  width: min(900px, calc(100vw - 24px));
+}
+
+.carousel-dialog h2 {
+  margin: 0 42px 12px 0;
+  color: #35dfff;
+  font-size: 18px;
+}
+
+.kiosk-gallery {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 42px;
+  align-items: center;
+  gap: 10px;
+}
+
+.kiosk-gallery img {
+  width: 100%;
+  height: min(65vh, 680px);
+  max-height: calc(100dvh - 170px);
+  object-fit: contain;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.kiosk-gallery img.is-changing-next {
+  opacity: 0;
+  transform: translateX(-14px);
+}
+
+.kiosk-gallery img.is-changing-previous {
+  opacity: 0;
+  transform: translateX(14px);
+}
+
+.kiosk-nav {
+  width: 42px;
+  height: 48px;
+  border: 0;
+  border-radius: 9px;
+  background: #ffffff16;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+@media(prefers-reduced-motion: reduce) {
+  .kiosk-gallery img {
+    transition: none;
+  }
+}
+
+.kiosk-counter {
+  display: block;
+  margin-top: 10px;
+  color: #aaa8bc;
+  text-align: center;
+  font-size: 12px;
+}
+
+.price-dialog-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 8px;
+  background: #ffffff16;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* PIE */
+
+footer {
+  text-align: center;
+  padding: 35px 10px 10px;
+  color: #88869b;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+@media(max-width:380px) {
+  h1 { font-size: 35px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+  <img class="logo" src="LOGO CB.png" alt="Logo CB">
+
+  <h1>CYBER<span>BIOS</span></h1>
+
+  <div class="subtitle">
+    TU PRÓXIMO NIVEL DE ENTRETENIMIENTO
+  </div>
+
+  <p class="description">
+    Mucho más que un cyber. El spot 24/7.
+    PC Gamers, PlayStation 5, Kiosco,
+    precios, reservas y BIOS ACCESS.
+    ¡Creá tu cuenta totalmente GRATIS!
+  </p>
+
+</header>
+
+<a class="address"
+   href="https://www.google.com/maps/search/?api=1&query=Bartolome+Mitre+162+Florencio+Varela"
+   target="_blank">
+
+  📍 <strong>Bartolomé Mitre 162</strong>
+  <br>
+  <small>Florencio Varela</small>
+
+</a>
+
+<h3 class="section-title">
+CONOCE MÀS DE NOSOTROS
+</h3>
+
+<a class="link"
+   href="https://www.instagram.com/cyberbios/"
+   target="_blank">
+
+  <div class="icon"><img src="Insta.png" alt="Instagram"></div>
+  <div class="link-text">
+    <strong>INSTAGRAM</strong>
+    <small>Seguinos y conocé nuestras novedades</small>
+  </div>
+  ↗
+</a>
+
+<a class="link"
+   href="https://wa.me/5491136013902"
+   target="_blank">
+
+  <div class="icon"><img src="WhatsApp.png" alt="WhatsApp"></div>
+  <div class="link-text">
+    <strong>WHATSAPP</strong>
+    <small>Contactanos o reserva tu lugar</small>
+  </div>
+  ↗
+</a>
+
+<button class="link" type="button" onclick="abrirPrecios()">
+
+  <span class="icon"><img src="Servicios.PNG" alt="Precios y servicios"></span>
+  <span class="link-text">
+    <strong>PRECIOS Y SERVICIOS</strong>
+    <small>Conoce nuestras tarifas y promociones</small>
+  </span>
+</button>
+
+<button class="link" type="button" onclick="abrirKiosco()">
+
+  <span class="icon"><img src="kiosco.PNG" alt="Kiosco"></span>
+  <span class="link-text">
+    <strong>NUESTRO KIOSCO</strong>
+    <small>Te presentamos nuestra lista de precios y promos para todos los gustos </small>
+  </span>
+</button>
+
+<dialog class="price-dialog" id="priceDialog" aria-label="Precios y servicios"
+        onclick="if (event.target === this) cerrarPrecios()">
+  <button class="price-dialog-close" type="button" aria-label="Cerrar"
+          onclick="cerrarPrecios()">×</button>
+  <img src="BiosPrecios.jpg" alt="Lista de precios y servicios de CYBERBIOS">
+</dialog>
+
+<dialog class="price-dialog carousel-dialog" id="kioskDialog"
+        aria-labelledby="kioskTitle"
+        onclick="if (event.target === this) cerrarKiosco()">
+  <button class="price-dialog-close" type="button" aria-label="Cerrar"
+          onclick="cerrarKiosco()">×</button>
+  <h2 id="kioskTitle">MENÚ Y PROMOCIONES</h2>
+  <div class="kiosk-gallery">
+    <button class="kiosk-nav" type="button" aria-label="Imagen anterior"
+            onclick="cambiarImagenKiosco(-1)">‹</button>
+    <img id="kioskImage" src="MENU.png" alt="MENU.png">
+    <button class="kiosk-nav" type="button" aria-label="Imagen siguiente"
+            onclick="cambiarImagenKiosco(1)">›</button>
+  </div>
+  <span class="kiosk-counter" id="kioskCounter" aria-live="polite"></span>
+</dialog>
+
+<h3 class="section-title">
+NUESTROS SERVICIOS
+</h3>
+
+<div class="services">
+
+  <div class="service">
+    <div class="emoji">🖥️</div>
+    <strong>PC GAMERS</strong>
+    <small>Gaming de alto rendimiento</small>
+  </div>
+
+  <div class="service">
+    <div class="emoji">🎮</div>
+    <strong>PLAYSTATION 5</strong>
+    <small>Experiencia de nueva generación</small>
+  </div>
+
+  <div class="service">
+    <div class="emoji">🍫</div>
+    <strong>KIOSCO</strong>
+    <small>Snacks, bebidas y mucho más</small>
+  </div>
+
+  <div class="service">
+    <div class="emoji">🔥</div>
+    <strong>PROMOCIONES</strong>
+    <small>Ofertas y beneficios especiales</small>
+  </div>
+
+</div>
+
+<section class="wifi">
+
+  <h2>📶 WI-FI CLIENTES</h2>
+
+  <p>Conectate a nuestra red</p>
+
+  <button onclick="mostrarWifi()">
+    VER DATOS DEL WI-FI
+  </button>
+
+  <div class="wifi-info" id="wifiInfo">
+
+    <p>Nombre de la red:</p>
+    <strong>BiosClientes</strong>
+
+    <img class="wifi-image" src="wifiiBios.jpeg"
+         alt="Información de conexión Wi-Fi">
+
+    <p>Contraseña:</p>
+    <strong id="clave">012345689Zz</strong>
+
+    <button onclick="copiarClave()">
+      COPIAR CONTRASEÑA
+    </button>
+
+    <p id="mensaje"></p>
+
+  </div>
+
+</section>
+
+<footer>
+  CYBERBIOS · GAMING & COMMUNITY
+  <br><br>
+  vivi la experiencia Bios
+</footer>
+
+</div>
+
+<script>
+
+function abrirPrecios() {
+  document.getElementById("priceDialog").showModal();
+}
+
+function cerrarPrecios() {
+  document.getElementById("priceDialog").close();
+}
+
+const imagenesKiosco = [
+  "MENU.png",
+  "PROMO PANCH.png",
+  "ALF.png",
+  "NACHOS.jpg",
+  "PIZZA.png",
+  "PRM SANG.jpg",
+  "PRM ESCOL.png"
+];
+let indiceImagenKiosco = 0;
+let transicionImagenKiosco = null;
+
+function actualizarImagenKiosco() {
+  const imagen = imagenesKiosco[indiceImagenKiosco];
+  document.getElementById("kioskImage").src = imagen;
+  document.getElementById("kioskImage").alt = imagen;
+  document.getElementById("kioskCounter").textContent =
+    `${indiceImagenKiosco + 1} / ${imagenesKiosco.length}`;
+}
+
+function abrirKiosco() {
+  if (transicionImagenKiosco !== null) {
+    window.clearTimeout(transicionImagenKiosco);
+    transicionImagenKiosco = null;
+  }
+  document.getElementById("kioskImage").classList.remove(
+    "is-changing-next",
+    "is-changing-previous"
+  );
+  actualizarImagenKiosco();
+  document.getElementById("kioskDialog").showModal();
+}
+
+function cerrarKiosco() {
+  document.getElementById("kioskDialog").close();
+}
+
+function cambiarImagenKiosco(direccion) {
+  indiceImagenKiosco =
+    (indiceImagenKiosco + direccion + imagenesKiosco.length) %
+    imagenesKiosco.length;
+
+  const imagen = document.getElementById("kioskImage");
+  if (transicionImagenKiosco !== null) {
+    window.clearTimeout(transicionImagenKiosco);
+    transicionImagenKiosco = null;
+  }
+  imagen.classList.remove("is-changing-next", "is-changing-previous");
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    actualizarImagenKiosco();
+    return;
+  }
+
+  imagen.classList.add(
+    direccion > 0 ? "is-changing-next" : "is-changing-previous"
+  );
+  transicionImagenKiosco = window.setTimeout(() => {
+    actualizarImagenKiosco();
+    imagen.classList.remove("is-changing-next", "is-changing-previous");
+    transicionImagenKiosco = null;
+  }, 200);
+}
+
+document.addEventListener("keydown", (event) => {
+  if (!document.getElementById("kioskDialog").open) return;
+
+  if (event.key === "ArrowLeft") {
+    cambiarImagenKiosco(-1);
+  } else if (event.key === "ArrowRight") {
+    cambiarImagenKiosco(1);
+  }
+});
+
+function mostrarWifi() {
+  const panel = document.getElementById("wifiInfo");
+
+  panel.style.display =
+    panel.style.display === "block" ? "none" : "block";
+}
+
+async function copiarClave() {
+  const clave = document.getElementById("clave").textContent;
+
+  try {
+    await navigator.clipboard.writeText(clave);
+    document.getElementById("mensaje").textContent =
+      "¡Contraseña copiada!";
+  } catch (error) {
+    document.getElementById("mensaje").textContent =
+      "Seleccioná la contraseña para copiarla.";
+  }
+}
+
+</script>
+
+</body>
+</html>
+
